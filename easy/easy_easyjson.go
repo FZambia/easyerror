@@ -10,7 +10,7 @@ import (
 
 var _ = json.RawMessage{} // suppress unused package warning
 
-func easyjson_decode_github_com_centrifugal_easyerror_easy_clientCommand(in *jlexer.Lexer, out *clientCommand) {
+func easyjson_decode_github_com_FZambia_easyerror_easy_Sample(in *jlexer.Lexer, out *Sample) {
 	in.Delim('{')
 	for !in.IsDelim('}') {
 		key := in.UnsafeString()
@@ -21,13 +21,9 @@ func easyjson_decode_github_com_centrifugal_easyerror_easy_clientCommand(in *jle
 			continue
 		}
 		switch key {
-		case "uid":
-			out.UID = string(in.String())
-		case "method":
-			out.Method = string(in.String())
-		case "params":
+		case "data":
 			if data := in.Raw(); in.Ok() {
-				in.AddError((out.Params).UnmarshalJSON(data))
+				in.AddError((out.Data).UnmarshalJSON(data))
 			}
 		default:
 			in.SkipRecursive()
@@ -36,7 +32,7 @@ func easyjson_decode_github_com_centrifugal_easyerror_easy_clientCommand(in *jle
 	}
 	in.Delim('}')
 }
-func easyjson_encode_github_com_centrifugal_easyerror_easy_clientCommand(out *jwriter.Writer, in *clientCommand) {
+func easyjson_encode_github_com_FZambia_easyerror_easy_Sample(out *jwriter.Writer, in *Sample) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -44,35 +40,23 @@ func easyjson_encode_github_com_centrifugal_easyerror_easy_clientCommand(out *jw
 		out.RawByte(',')
 	}
 	first = false
-	out.RawString("\"uid\":")
-	out.String(string(in.UID))
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"method\":")
-	out.String(string(in.Method))
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"params\":")
-	out.Raw((in.Params).MarshalJSON())
+	out.RawString("\"data\":")
+	out.Raw((in.Data).MarshalJSON())
 	out.RawByte('}')
 }
-func (v *clientCommand) MarshalJSON() ([]byte, error) {
+func (v *Sample) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson_encode_github_com_centrifugal_easyerror_easy_clientCommand(&w, v)
+	easyjson_encode_github_com_FZambia_easyerror_easy_Sample(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
-func (v *clientCommand) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson_encode_github_com_centrifugal_easyerror_easy_clientCommand(w, v)
+func (v *Sample) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson_encode_github_com_FZambia_easyerror_easy_Sample(w, v)
 }
-func (v *clientCommand) UnmarshalJSON(data []byte) error {
+func (v *Sample) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson_decode_github_com_centrifugal_easyerror_easy_clientCommand(&r, v)
+	easyjson_decode_github_com_FZambia_easyerror_easy_Sample(&r, v)
 	return r.Error()
 }
-func (v *clientCommand) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson_decode_github_com_centrifugal_easyerror_easy_clientCommand(l, v)
+func (v *Sample) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson_decode_github_com_FZambia_easyerror_easy_Sample(l, v)
 }
